@@ -1,0 +1,19 @@
+#!/bin/bash
+
+read -p "Enter a number: " number
+
+sum=0
+temp=$number
+
+while (( temp > 0 )); do
+  digit=$(( temp % 10 ))
+  power=$(( digit * digit * digit ))
+  sum=$(( sum + power ))
+  temp=$(( temp / 10 ))
+done
+
+if (( sum == number )); then
+  echo "$number is an Armstrong number."
+else
+  echo "$number is NOT an Armstrong number."
+fi
