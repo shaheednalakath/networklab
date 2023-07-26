@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Input the decimal number
+read -p "Enter a decimal number: " decimal
+
+# Validate the input to ensure it's a positive integer
+if ! [[ "$decimal" =~ ^[0-9]+$ ]]; then
+  echo "Error: Please enter a valid positive decimal number."
+  exit 1
+fi
+
+# Function to convert decimal to binary
+decimal_to_binary() {
+  local num=$1
+  local binary=""
+  
+  while (( num > 0 )); do
+    remainder=$(( num % 2 ))
+    binary="$remainder$binary"
+    num=$(( num / 2 ))
+  done
+
+  echo "$binary"
+}
+
+# Call the function and display the result
+binary_result=$(decimal_to_binary "$decimal")
+echo "Binary representation of $decimal is: $binary_result"
