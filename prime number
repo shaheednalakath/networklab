@@ -1,0 +1,32 @@
+#!/bin/bash
+
+is_prime() {
+  local num=$1
+  if (( num < 2 )); then
+    return 1
+  fi
+
+  for (( i = 2; i <= num / 2; i++ )); do
+    if (( num % i == 0 )); then
+      return 1
+    fi
+  done
+
+  return 0
+}
+
+
+read -p "Enter the starting number of the range: " start
+read -p "Enter the ending number of the range: " end
+
+count=0
+
+
+for (( num = start; num <= end; num++ )); do
+  if is_prime $num; then
+    ((count++))
+  fi
+done
+
+
+echo "The number of prime numbers in the range $start to $end is: $count"
