@@ -1,0 +1,26 @@
+#!/bin/bash
+read -p "Enter the file name: " file_name
+
+if [ ! -f "$file_name" ]; then
+  echo "Error: The file $file_name does not exist."
+  exit 1
+fi
+
+
+temp_file=$(mktemp)
+tr '[:upper:]' '[:lower:]' < "$file_name" > "$temp_file"
+
+line_count=$(wc -l < "$temp_file")
+word_count=$(wc -w < "$temp_file")
+char_count=$(wc -m < "$temp_file")
+
+
+echo "Number of lines in the file: $line_count"
+echo "Number of words in the file: $word_count"
+echo "Number of characters in the file: $char_count"
+
+
+sort -r "$temp_file"
+
+
+rm "$temp_file"
