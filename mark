@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Input three marks
+read -p "Enter the first mark: " mark1
+read -p "Enter the second mark: " mark2
+read -p "Enter the third mark: " mark3
+
+# Calculate the average
+average=$(( (mark1 + mark2 + mark3) / 3 ))
+
+# Display the average
+echo "The average mark is: $average"
+
+# Determine the grade based on the average
+if (( average >= 90 )); then
+  grade="A"
+elif (( average >= 80 )); then
+  grade="B"
+elif (( average >= 70 )); then
+  grade="C"
+elif (( average >= 60 )); then
+  grade="D"
+else
+  grade="F"
+fi
+
+# Display the grade
+echo "The grade of the student is: $grade"
